@@ -29,7 +29,7 @@ window.onload = function () {
   ball = new Ball(fx);
   bricks = new Bricks(fx);
   addEventListener('mousemove', mouseMove);
-  start();
+  //start();
 }
 
 window.onresize = function () {
@@ -54,16 +54,45 @@ function update() {
 }
 
 function draw() {
-  fx.fillcanvas('#2c3e50')
+  fx.fillCanvas('#2c3e50')
   bricks.draw();
   ball.draw();
   paddle.draw();
 }
 
 function move() {
-  console.log('move everything');
+  ball.move();
+  ball.collisions(paddle, bricks);
+  if (bricks.isBrickCountZero() || ball.livesCount()) {
+    gameOver();
+  }
 }
 
 function mouseMove(event) {
   paddle.moveWithMouse(event);
+}
+
+function startGame() {
+  let startDiv = document.getElementById('start');
+  let gameCanvas = document.getElementById('canvas');
+  let gameOver = document.getElementById('game-over');
+  startDiv.style.display = 'none';
+  gameCanvas.style.display = 'block';
+  gameOver.style.display = 'none';
+  start();
+}
+
+function gameOver() {
+
+  let startDiv = document.getElementById('start');
+  let gameCanvas = document.getElementById('canvas');
+  let gameOver = document.getElementById('game-over');
+  startDiv.style.display = 'none';
+  gameCanvas.style.display = 'none';
+  gameOver.style.display = 'block';
+
+  bricks.reset();
+  ball.reset();
+  ball.lives = 3;
+  clearInterval(loop);
 }

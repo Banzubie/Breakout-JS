@@ -6,21 +6,22 @@
   <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
   <meta content="utf-8" http-equiv="encoding">
   <link rel="stylesheet" type="text/css" href="breakout.css">
-  <script src="game.js"></script>
-  <script src="paddle.js"></script>
-  <script src="bricks.js"></script>
-  <script src="ball.js"></script>
   <script src="fx.js"></script>
+  <script src="bricks.js"></script>
+  <script src="paddle.js"></script>
+  <script src="ball.js"></script>
+  <script src="game.js"></script>
 </head>
 
 <body>
-  <div id="startgame" style="display:block">
-    <a href="#" onclick="startgame()">Begin!</a>
+  <div id="start" style="display:block">
+    <a href="#" onclick="startGame()">Start game!</a>
   </div>
-  <div id="gameover" style="display:none">
+  <div id="game-over" style="display:none">
     <h1>Game Over</h1>
-    <a href="#" onclick="startgame()">Try again!</a>
+    <a href="#" onclick="startGame()">Try again!</a>
   </div>
+  <canvas id="canvas" style="display:none"></canvas>
 </body>
 
 </html>

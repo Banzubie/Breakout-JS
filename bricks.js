@@ -47,8 +47,8 @@ class Bricks {
   draw() {
     for (let eachRow = 0; eachRow < this.rows; eachRow++) {
       for (let eachCol = 0; eachCol < this.columns; eachCol++) {
-        let arrayIndex = this.rowToAwwayIndex(eachCol, eachRow);
-        if (this.grid[arrayIndex] ==== true) {
+        let arrayIndex = this.rowColToArrayIndex(eachCol, eachRow);
+        if (this.grid[arrayIndex] === true) {
           this.colorPicker(eachRow)
           this.fx.drawRect(
             this.brickWidth * eachCol,
@@ -62,13 +62,13 @@ class Bricks {
     }
   }
 
-  rowToAwwayIndex(col, row) {
+  rowColToArrayIndex(col, row) {
     return col + this.columns * row;
   }
 
   isBrickAtColRow(col, row) {
     if (col >= 0 && col < this.columns && row >= 0 && row < this.rows) {
-      let brickIndexUnderCoord = this.rowToAwwayIndex(col, row);
+      let brickIndexUnderCoord = this.rowColToArrayIndex(col, row);
       return this.grid[brickIndexUnderCoord];
     }
     return false;
@@ -76,19 +76,23 @@ class Bricks {
 
   colorPicker(row) {
     this.color = this.green;
-    swtich(row) {
+    switch (row) {
       case 0:
       case 1:
-      this.color = this.red;
-      break;
+        this.color = this.red;
+        break;
       case 2:
       case 3:
-      this.color = this.orange;
-      break;
+        this.color = this.orange;
+        break;
       case 4:
       case 5:
-      this.color = this.yellow;
-      break;
+        this.color = this.yellow;
+        break;
     }
+  }
+
+  isBrickCountZero() {
+    return this.liveBricks == 0;
   }
 }
