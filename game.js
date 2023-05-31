@@ -19,10 +19,16 @@ speed increase on hit
 let fx;
 let loop;
 let fps = 1000 / 60;
+let paddle;
+let ball;
+let bricks;
 
 window.onload = function () {
   fx = new Fx('canvas');
   paddle = new Paddle(fx);
+  ball = new Ball(fx);
+  bricks = new Bricks(fx);
+  addEventListener('mousemove', mouseMove);
   start();
 }
 
@@ -32,7 +38,9 @@ window.onresize = function () {
 
 function init() {
   fx.setCanvasToPageSize();
+  ball.init();
   paddle.init();
+  bricks.init();
 }
 
 function start() {
@@ -47,9 +55,15 @@ function update() {
 
 function draw() {
   fx.fillcanvas('#2c3e50')
+  bricks.draw();
+  ball.draw();
   paddle.draw();
 }
 
 function move() {
   console.log('move everything');
+}
+
+function mouseMove(event) {
+  paddle.moveWithMouse(event);
 }

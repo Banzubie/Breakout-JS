@@ -29,4 +29,11 @@ class Paddle {
   draw() {
     this.fx.drawRect(this.xpos, this.ypos, this.width, this.height, this.color);
   }
+
+  moveWithMouse(event) {
+    let rect = this.fx.getCanvas().getBoundingClientRect();
+    let root = document.documentElement;
+    let mousex = event.clientX - rect.left - root.scrollLeft;
+    this.xpos = mouseX - this.width / 2;
+  }
 }

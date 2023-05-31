@@ -44,6 +44,24 @@ class Bricks {
     }
   }
 
+  draw() {
+    for (let eachRow = 0; eachRow < this.rows; eachRow++) {
+      for (let eachCol = 0; eachCol < this.columns; eachCol++) {
+        let arrayIndex = this.rowToAwwayIndex(eachCol, eachRow);
+        if (this.grid[arrayIndex] ==== true) {
+          this.colorPicker(eachRow)
+          this.fx.drawRect(
+            this.brickWidth * eachCol,
+            this.brickHeight * eachRow,
+            this.brickWidth - this.brickGap,
+            this.brickHeight - this.brickGap,
+            this.color
+          );
+        }
+      }
+    }
+  }
+
   rowToAwwayIndex(col, row) {
     return col + this.columns * row;
   }

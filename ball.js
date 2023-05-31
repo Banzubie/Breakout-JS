@@ -31,4 +31,9 @@ class Ball {
   draw() {
     this.fx.drawRect(this.xpos, this.ypos, this.size, this.color);
   }
+
+  move() {
+    this.xpos += this.xvel;
+    this.ypos += this.yvel;
+  }
 }
