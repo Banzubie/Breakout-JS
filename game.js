@@ -15,3 +15,41 @@ you rotate the bricks around the ball as it ricochets around inside
 if the ball gets outside of bricks you lose
 speed increase on hit
 */
+
+let fx;
+let loop;
+let fps = 1000 / 60;
+
+window.onload = function () {
+  fx = new Fx('canvas');
+  paddle = new Paddle(fx);
+  start();
+}
+
+window.onresize = function () {
+  init();
+}
+
+function init() {
+  fx.setCanvasToPageSize();
+  paddle.init();
+}
+
+function start() {
+  init();
+  loop = setInterval(update, fps);
+}
+
+function update() {
+  move();
+  draw();
+}
+
+function draw() {
+  fx.fillcanvas('#2c3e50')
+  paddle.draw();
+}
+
+function move() {
+  console.log('move everything');
+}
